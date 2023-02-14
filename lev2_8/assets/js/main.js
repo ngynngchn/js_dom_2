@@ -15,7 +15,6 @@ Suche nach keycode.
  */
 
 let button = document.querySelector("#enter");
-
 button.addEventListener("click", addElement);
 
 function addElement() {
@@ -24,4 +23,12 @@ function addElement() {
 
 	newElement.appendChild(document.createTextNode(userInput));
 	document.querySelector("ul").appendChild(newElement);
+	userInput.value = "";
 }
+
+document.addEventListener("keyup", (event) => {
+	event.preventDefault();
+	if (event.key == "Enter") {
+		button.click();
+	}
+});

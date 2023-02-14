@@ -16,7 +16,7 @@ addEventListener
 
 const buttons = document.querySelectorAll("button");
 
-const myList = buttons.forEach((button) => {
+buttons.forEach((button) => {
 	button.addEventListener("click", showElement);
 });
 
