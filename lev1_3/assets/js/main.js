@@ -15,39 +15,18 @@ addEventListener
  */
 
 const buttons = document.querySelectorAll("button");
-console.log("💡 ~ buttons", buttons);
 
-const myList = document.querySelector("#myList");
-console.log("💡 ~ myList", myList);
-
-const output = document.querySelector("output");
-
-buttons.forEach((button) => {
+const myList = buttons.forEach((button) => {
 	button.addEventListener("click", showElement);
 });
 
-console.log(output);
-console.log(myList.firstElementChild.innerHTML);
-
 function showElement(event) {
-	let action = event.target.innerHTML.split(" ").splice(1).join(".");
-	console.log(action);
-	switch (action) {
-		case "firstElementChild":
-			output.innerHTML = myList.firstElementChild.innerHTML;
-			break;
-		case "lastElementChild":
-			output.innerHTML = myList.lastElementChild.innerHTML;
-			break;
-		case "firstElementChild.nextElementSibling":
-			output.innerHTML = myList.firstElementChild.nextElementSibling.innerHTML;
-			break;
-		case "lastElementChild.previousElementSibling":
-			output.innerHTML =
-				myList.lastElementChild.previousElementSibling.innerHTML;
-			break;
+	let action = event.target.innerHTML.split(" ").splice(1);
+	let myList = document.querySelector("#myList");
 
-		default:
-			break;
+	for (let i = 0; i < action.length; i++) {
+		myList = myList[action[i]];
 	}
+
+	document.querySelector("output").innerHTML = myList.innerHTML;
 }
